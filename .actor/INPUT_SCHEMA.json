@@ -1,0 +1,50 @@
+{
+  "title": "Gemini Knowledge Scraper",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "target": {
+      "title": "Target URL",
+      "type": "string",
+      "description": "Website to scrape and index",
+      "editor": "textfield",
+      "example": "https://docs.react.dev"
+    },
+    "max_pages": {
+      "title": "Maximum Pages",
+      "type": "integer",
+      "description": "Max pages to scrape",
+      "default": 100,
+      "minimum": 1,
+      "maximum": 2000
+    },
+    "scraper_budget": {
+      "title": "Scraper Budget",
+      "type": "string",
+      "description": "Cost optimization strategy",
+      "enum": ["minimal", "optimal", "premium"],
+      "default": "optimal"
+    },
+    "corpus_name": {
+      "title": "Knowledge Base Name",
+      "type": "string",
+      "description": "Name for Gemini File Search Store",
+      "default": "scraped-knowledge"
+    },
+    "gemini_api_key": {
+      "title": "Gemini API Key",
+      "type": "string",
+      "isSecret": true,
+      "description": "Your Google Gemini API key (from aistudio.google.com)",
+      "editor": "textfield"
+    },
+    "apify_token": {
+      "title": "Apify API Token",
+      "type": "string",
+      "isSecret": true,
+      "description": "Your Apify token (from console.apify.com/settings/integrations)",
+      "editor": "textfield"
+    }
+  },
+  "required": ["target", "gemini_api_key", "apify_token"]
+}

@@ -1,0 +1,145 @@
+# ========== SECRETS & CREDENTIALS ==========
+# CRITICAL: Never commit API keys or tokens
+storage/
+*.secret
+.env
+.env.*
+*.key
+*.pem
+*_key.json
+credentials.json
+
+# Session files with API keys (root directory only)
+SESSION_*.md
+/test_*.py
+
+# ========== APIFY ACTOR ==========
+# Local storage (contains INPUT.json with secrets)
+apify_storage/
+
+# ========== PYTHON ==========
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# ========== IDEs & EDITORS ==========
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ========== OS ==========
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+.Trash-*
+
+# ========== LOGS & TEMPORARY FILES ==========
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
+
+# ========== PROJECT SPECIFIC ==========
+# Documentation with embedded keys (keep templates only)
+SETUP_GUIDE.md
+IMPLEMENTATION.md
+API_ACCESS_RESEARCH.md
+DEVELOPMENT_STATUS.md
+
+# Test outputs
+/tmp/
+test_docs/
+*.txt.bak
+
+# Jupyter notebooks
+*.ipynb_checkpoints/
+
+# ========== KEEP (Explicitly track these) ==========
+# !README.md
+# !.actor/
+# !src/
+# !tests/
+# !requirements.txt
+# !.claude/

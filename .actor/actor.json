@@ -1,0 +1,26 @@
+{
+  "actorSpecification": 1,
+  "name": "gemini-knowledge-scraper",
+  "version": "1.0.0",
+  "buildTag": "latest",
+  "dockerfile": "./Dockerfile",
+  "readme": "./README.md",
+  "input": "./.actor/INPUT_SCHEMA.json",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "Knowledge Base Metadata",
+      "views": {
+        "overview": {
+          "title": "Created Knowledge Bases",
+          "transformation": {
+            "fields": ["target", "pages_scraped", "gemini_corpus.files_indexed"]
+          },
+          "display": {
+            "component": "table"
+          }
+        }
+      }
+    }
+  }
+}
