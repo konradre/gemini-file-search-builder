@@ -21,7 +21,7 @@ Scrape once, query forever. This actor builds permanent Gemini File Search RAG k
 
 ### Key Features
 
-- 🧠 **Automatic RAG Pipeline** - Scrape → Clean → Upload → Query (all in one run)
+- 🧠 **Automatic RAG Pipeline** - Scrape → Clean → Upload to Gemini (all in one run)
 - 📚 **Built-in Citations** - Every answer includes source documents
 - ♾️ **Unlimited Free Queries** - Pay once to scrape, query forever (no storage fees)
 - 🎯 **Challenge Compliant** - 100% banned scraper filtering (Instagram, Amazon, Google Maps, etc.)
@@ -41,7 +41,9 @@ Scrape once, query forever. This actor builds permanent Gemini File Search RAG k
 ```
 Website URL → Scraper Selection → Content Extraction → Document Conversion
                                                               ↓
-         Query Interface ← Gemini File Search ← Upload Documents
+                                        Gemini File Search ← Upload Documents
+                                                              ↓
+                                        Queryable Knowledge Base (You query it later)
 ```
 
 1. **Smart Scraper Selection** - Analyzes target and selects optimal Apify scraper
