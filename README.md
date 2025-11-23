@@ -255,14 +255,14 @@ A: Web scraping is generally legal for publicly available, non-personal data. Al
 
 ## Integrations
 
-Connect with popular automation platforms and cloud services:
+This Actor works seamlessly with Apify's platform integrations:
 
-- **Make, Zapier, Slack** - Automate workflows
-- **Webhooks** - Trigger actions when runs complete
-- **Google Sheets, Google Drive** - Export and sync data
-- **API Access** - Programmatic control via Python/JavaScript
+- **Make, Zapier** - Automate workflows with no-code tools
+- **Webhooks** - Trigger actions when knowledge base creation completes
+- **API Access** - Control programmatically via Python/JavaScript SDKs
+- **Scheduled Runs** - Automatically update knowledge bases on schedule
 
-See [all integrations](https://docs.apify.com/platform/integrations)
+All Apify actors support these integrations out of the box. See [Apify integrations](https://docs.apify.com/platform/integrations) for setup guides.
 
 ## Using with AI Agents
 

@@ -39,7 +39,7 @@
       "title": "Gemini API Key",
       "type": "string",
       "isSecret": true,
-      "description": "Your Google Gemini API key (from aistudio.google.com)",
+      "description": "Your Google Gemini API key (from aistudio.google.com). IMPORTANT: Use the SAME key you'll use to query the knowledge base later. File Search Stores are tied to the API key that created them.",
       "editor": "textfield"
     },
     "apify_token": {
