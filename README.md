@@ -188,11 +188,11 @@ Your Apify subscription plan determines automatic discounts:
 
 ## Architecture
 
-### Architecture Patterns
+### Key Features
 
-1. **Skills-Based Organization** - `.claude/skills/` directory with 3 modular skills
-2. **Startup Validation** - `src/hooks/skill_enforcement.py` validates configuration at startup
-3. **Challenge Compliance Filter** - `src/tools/scraper_selector.py` blocks all prohibited scrapers
+1. **Modular Design** - Separate modules for scraping, conversion, and upload
+2. **Challenge Compliance** - 100% banned scraper filtering (tested with 49 unit tests)
+3. **Intelligent Selection** - Automatic scraper scoring based on target type and budget
 
 ### Tech Stack
 
@@ -207,22 +207,19 @@ Your Apify subscription plan determines automatic discounts:
 gemini-file-search-builder/
 ├── .actor/
 │   ├── actor.json          # Actor configuration
-│   └── INPUT_SCHEMA.json   # Input validation schema
-├── .claude/
-│   └── skills/             # Modular skill definitions
-│       ├── apify-scraper-selection/
-│       ├── document-conversion/
-│       └── gemini-file-upload/
+│   ├── INPUT_SCHEMA.json   # Input validation schema
+│   └── output_schema.json  # Output definition
 ├── src/
 │   ├── main.py             # Main workflow orchestration
 │   ├── tools/
-│   │   ├── scraper_selector.py    # Smart scraper selection + banned filter
+│   │   ├── scraper_library.py     # Production scraper library (5 scrapers)
+│   │   ├── scraper_selector.py    # Smart selection + banned filter
 │   │   ├── document_converter.py  # HTML → clean text
 │   │   └── gemini_uploader.py     # File Search integration
-│   └── hooks/
-│       └── skill_enforcement.py   # Startup validation
+│   └── utils/
 ├── tests/
-│   └── test_banned_filter.py     # 49 test cases
+│   └── test_banned_filter.py     # 49 unit tests
+├── Dockerfile
 ├── requirements.txt
 └── README.md
 ```

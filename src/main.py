@@ -2,18 +2,18 @@
 Gemini Knowledge Scraper - Main Entry Point
 
 Complete workflow:
-1. Validate startup (skills, hooks)
-2. Select optimal scraper (banned filter applied)
-3. Execute scraping with fallback
-4. Convert HTML → text documents
-5. Upload to Gemini File Search Store
+1. Select optimal scraper (banned filter applied)
+2. Execute scraping with automatic fallback
+3. Convert HTML → clean text documents
+4. Upload to Gemini File Search Store
+5. Charge per page processed (pay-per-event)
 6. Generate query guide
-7. Return corpus metadata + pricing
+7. Return knowledge base metadata + pricing
 
 Architecture:
-- Skills-based modular design (organized in .claude/skills/)
-- Hook-based validation (startup enforcement)
-- Challenge compliance filter (100% banned scraper blocking)
+- Modular design (scraper library, converter, uploader)
+- Challenge compliance (100% banned scraper filtering)
+- Intelligent selection (target-type aware scoring)
 """
 
 from apify import Actor
@@ -36,7 +36,6 @@ from .tools.gemini_uploader import (
     upload_to_gemini,
     generate_query_guide
 )
-from .hooks import skill_enforcement
 
 
 async def execute_scraper_with_fallback(
@@ -65,12 +64,6 @@ async def execute_scraper_with_fallback(
         try:
             Actor.log.info(f"Attempting scraper {i+1}/{len(selected_scrapers)}: {scraper_id}")
 
-            # Validate with hook (safety check)
-            is_allowed, message = skill_enforcement.validate_scraper_selection(scraper)
-            if not is_allowed:
-                Actor.log.warning(f"🚫 Hook blocked: {message}")
-                continue
-
             # Run scraper (HTML/web pages only)
             run = apify_client.actor(scraper_id).call(
                 run_input={
@@ -88,9 +81,6 @@ async def execute_scraper_with_fallback(
             if items:
                 Actor.log.info(f"✅ Scraper succeeded: {scraper_id} ({len(items)} items)")
 
-                # Log execution for audit
-                skill_enforcement.log_scraper_execution(scraper, 'success', f"{len(items)} items")
-
                 return {
                     'success': True,
                     'data': items,
@@ -104,7 +94,6 @@ async def execute_scraper_with_fallback(
         except Exception as e:
             last_error = str(e)
             Actor.log.warning(f"⚠️  Scraper {scraper_id} failed: {last_error}")
-            skill_enforcement.log_scraper_execution(scraper, 'failed', last_error)
             continue
 
     # All scrapers failed
@@ -135,13 +124,6 @@ async def main():
         workspace.mkdir(parents=True, exist_ok=True)
         docs_dir = workspace / "documents"
         docs_dir.mkdir(exist_ok=True)
-
-        # Validate skills (hook enforcement)
-        Actor.log.info("Validating skills directory...")
-        is_valid, message = skill_enforcement.validate_startup()
-        if not is_valid:
-            raise RuntimeError(f"❌ Skills validation failed: {message}")
-        Actor.log.info(message)
 
         # ========== PHASE 1: SCRAPER SELECTION ==========
 
