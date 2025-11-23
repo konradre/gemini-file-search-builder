@@ -31,9 +31,9 @@
     "corpus_name": {
       "title": "Knowledge Base Name",
       "type": "string",
-      "description": "Name for Gemini File Search Store",
-      "default": "scraped-knowledge",
-      "editor": "textfield"
+      "description": "Unique name for your knowledge base (e.g., 'python-docs', 'company-wiki'). Helps you identify it when querying or managing multiple stores.",
+      "editor": "textfield",
+      "example": "my-documentation"
     },
     "gemini_api_key": {
       "title": "Gemini API Key",
@@ -50,5 +50,5 @@
       "editor": "textfield"
     }
   },
-  "required": ["target", "gemini_api_key", "apify_token"]
+  "required": ["target", "corpus_name", "gemini_api_key", "apify_token"]
 }
