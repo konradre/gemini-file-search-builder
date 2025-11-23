@@ -152,11 +152,13 @@ Your Apify subscription plan determines automatic discounts:
 
 *Prices include ~$0.02 actor start fee*
 
-### What You DON'T Pay
+### What You DON'T Pay (to This Actor)
 
-✅ **Gemini API tokens** - You provide your own API key
+✅ **Gemini API costs** - You provide your own API key (billed per Google's pricing)
 ✅ **Apify platform usage** - You manage your own credits
-✅ **Storage fees** - Gemini File Search storage is free
+✅ **Pass-through fees** - No markup on Gemini or Apify costs
+
+**Note:** Gemini charges for indexing (~$0.15/1M tokens). Storage and query embeddings are free. See [Gemini pricing](https://ai.google.dev/pricing).
 
 ### Comparison
 
