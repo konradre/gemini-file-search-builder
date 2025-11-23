@@ -249,13 +249,8 @@ async def main():
         Actor.log.info(f"  Gemini indexing: ${gemini_corpus['cost_estimate_usd']:.2f}")
         Actor.log.info(f"  Total: ${total_charge:.2f}")
 
-        # Charge user
-        await Actor.charge({
-            f'knowledge-base-{tier}': {
-                'count': 1,
-                'amount_usd': total_charge
-            }
-        })
+        # Charge user (pay-per-event pricing)
+        await Actor.charge(event_name='knowledge-base-created', count=1)
 
         # ========== PHASE 6: OUTPUT ==========
 
@@ -270,6 +265,9 @@ async def main():
 
         # Read query guide content
         query_guide_content = query_guide_path.read_text()
+
+        # Save query guide to key-value store (for output schema)
+        await Actor.set_value('QUERY_GUIDE.md', query_guide_content, content_type='text/markdown')
 
         # Save to dataset (structured data)
         await Actor.push_data({

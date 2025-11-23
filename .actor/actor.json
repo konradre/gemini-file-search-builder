@@ -6,6 +6,7 @@
   "dockerfile": "./Dockerfile",
   "readme": "./README.md",
   "input": "./INPUT_SCHEMA.json",
+  "output": "./output_schema.json",
   "storages": {
     "dataset": {
       "actorSpecification": 1,

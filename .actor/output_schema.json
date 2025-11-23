@@ -1,0 +1,20 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Gemini File Search RAG Knowledge Base",
+  "description": "Output includes File Search Store details, indexing metadata, and query guide",
+  "type": "object",
+  "properties": {
+    "knowledge_base": {
+      "type": "string",
+      "title": "Knowledge Base Details",
+      "description": "Gemini File Search Store metadata and access information",
+      "template": "{{links.apiDefaultDatasetUrl}}/items"
+    },
+    "query_guide": {
+      "type": "string",
+      "title": "Query Guide",
+      "description": "Instructions for querying your knowledge base",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/QUERY_GUIDE.md"
+    }
+  }
+}
