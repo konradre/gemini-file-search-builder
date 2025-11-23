@@ -1,6 +1,6 @@
-# Gemini Knowledge Scraper
+# Gemini File Search Builder
 
-**Turn any website into an AI-queryable knowledge base with automatic citations**
+**Build Gemini File Search RAG knowledge bases from any website with automatic citations**
 
 [![Apify Store](https://img.shields.io/badge/Apify-Store-blue)](https://console.apify.com)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
@@ -167,7 +167,7 @@ print(response.text)  # Answer with automatic citations
 ### Project Structure
 
 ```
-gemini-knowledge-scraper/
+gemini-file-search-builder/
 ├── .actor/
 │   ├── actor.json          # Actor configuration
 │   └── INPUT_SCHEMA.json   # Input validation schema
@@ -197,7 +197,7 @@ gemini-knowledge-scraper/
 ```bash
 # Clone repository
 git clone <your-repo-url>
-cd gemini-knowledge-scraper
+cd gemini-file-search-builder
 
 # Install dependencies
 pip install -r requirements.txt

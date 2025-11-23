@@ -1,6 +1,6 @@
 {
   "actorSpecification": 1,
-  "name": "gemini-knowledge-scraper",
+  "name": "gemini-file-search-builder",
   "version": "1.0.0",
   "buildTag": "latest",
   "dockerfile": "./Dockerfile",
