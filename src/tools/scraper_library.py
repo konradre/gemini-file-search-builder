@@ -211,10 +211,4 @@ def score_scraper_production(scraper: Dict, budget_mode: str, target_type: str) 
     elif scraper['output_format'] == 'html':
         score += 5
 
-    # File download bonus (0-10 points) - for documentation sites
-    if scraper.get('supports_files', False) and target_type == 'documentation':
-        score += 10  # Bonus for docs sites (likely have PDFs)
-    elif scraper.get('supports_files', False):
-        score += 5  # Smaller bonus for other site types
-
     return round(score, 1)
