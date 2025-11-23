@@ -125,8 +125,8 @@ This Actor uses **pay-per-page pricing** for transparent, predictable costs:
 
 ### Base Pricing
 
-- **Actor start**: ~$0.02 per run (one-time)
-- **Page processed**: $0.0025 per page (base price)
+- **Actor start**: $0.02 per run (one-time)
+- **Page processed**: $0.0015 per page (base price)
 
 ### Store Discount Tiers
 
@@ -134,10 +134,10 @@ Your Apify subscription plan determines automatic discounts:
 
 | Plan | Monthly Cost | Discount | Price/Page | 100 Pages Total |
 |------|--------------|----------|------------|-----------------|
-| **Free** | $0 | 0% | $0.0025 | **$0.27** |
-| **Starter** | $39 | 10% (BRONZE) | $0.00225 | **$0.245** |
-| **Scale** | $199 | 20% (SILVER) | $0.002 | **$0.22** |
-| **Business** | $999 | 30% (GOLD) | $0.00175 | **$0.195** |
+| **Free** | $0 | 0% | $0.0015 | **$0.17** |
+| **Starter** | $39 | 10% (BRONZE) | $0.00135 | **$0.155** |
+| **Scale** | $199 | 20% (SILVER) | $0.0012 | **$0.14** |
+| **Business** | $999 | 30% (GOLD) | $0.00105 | **$0.125** |
 
 💰 **Upgrade your Apify plan to save up to 30% on processing costs!**
 
@@ -145,10 +145,10 @@ Your Apify subscription plan determines automatic discounts:
 
 | Pages | FREE Tier | GOLD Tier | Savings |
 |-------|-----------|-----------|---------|
-| 10 | $0.045 | $0.035 | 22% |
-| 50 | $0.145 | $0.11 | 24% |
-| 100 | $0.27 | $0.195 | 28% |
-| 500 | $1.27 | $0.895 | 30% |
+| 10 | $0.035 | $0.03 | 14% |
+| 50 | $0.095 | $0.07 | 26% |
+| 100 | $0.17 | $0.125 | 26% |
+| 500 | $0.77 | $0.545 | 29% |
 
 *Prices include ~$0.02 actor start fee*
 

@@ -221,7 +221,7 @@ async def main():
 
         # Charge per page processed (pay-per-event)
         pages_count = len(scraped_items)
-        price_per_page = 0.0025  # Base price, Store discounts applied automatically
+        price_per_page = 0.0015  # Base price (volume-focused), Store discounts applied automatically
 
         Actor.log.info(f"  Pages indexed: {pages_count}")
         Actor.log.info(f"  Base price: ${price_per_page}/page")
