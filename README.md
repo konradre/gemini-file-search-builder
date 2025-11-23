@@ -80,8 +80,12 @@ Website URL → Scraper Selection → Content Extraction → Document Conversion
 
 ### 3. Query Your Knowledge Base
 
-After the actor completes, use the returned `file_search_store_name` to query:
+After the actor completes, query your knowledge base using:
+- **Google AI Studio** (web interface - easiest)
+- **Python SDK** (for developers)
+- **Gemini mobile apps** (iOS/Android)
 
+**Python example:**
 ```python
 from google import genai
 from google.genai import types
@@ -90,7 +94,7 @@ client = genai.Client(api_key="YOUR_GEMINI_KEY")
 
 response = client.models.generate_content(
     model='gemini-2.5-flash',
-    contents='How do I use decorators in Python?',
+    contents='Your question here',
     config=types.GenerateContentConfig(
         tools=[types.Tool(
             file_search=types.FileSearch(
@@ -100,17 +104,19 @@ response = client.models.generate_content(
     )
 )
 
-print(response.text)  # Answer with automatic citations
+print(response.text)  # Answer with citations
 ```
+
+**See the query guide in your run's Key-Value Store for complete instructions.**
 
 ## Input Parameters
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | `target` | string | ✅ | - | Website URL to scrape and index |
-| `max_pages` | integer | | 100 | Maximum pages to scrape (1-2000) |
+| `max_pages` | integer | | 10 | Maximum pages to scrape (1-2000) |
 | `scraper_budget` | string | | "optimal" | Cost strategy: `minimal`, `optimal`, `premium` |
-| `corpus_name` | string | | "scraped-knowledge" | Name for your knowledge base |
+| `corpus_name` | string | ✅ | - | Unique name for your knowledge base |
 | `gemini_api_key` | string | ✅ | - | Google Gemini API key |
 | `apify_token` | string | ✅ | - | Apify API token |
 
