@@ -291,13 +291,15 @@ Your knowledge base has been created successfully! 🎉
 
 ## How to Query
 
+⚠️ **IMPORTANT:** You must use the **SAME Gemini API key** you provided to the Apify actor. File Search Stores are tied to the API key that created them.
+
 ### Option 1: Python SDK (Recommended)
 
 ```python
 from google import genai
 from google.genai import types
 
-# Initialize client (same API key you used for upload)
+# Initialize client with the SAME API key you used in the Apify actor
 client = genai.Client(api_key="YOUR_GEMINI_API_KEY")
 
 # Query your knowledge base
