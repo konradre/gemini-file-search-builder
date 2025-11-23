@@ -160,3 +160,4 @@ test_docs/
 # !tests/
 # !requirements.txt
 # !.claude/
+CHALLENGE_RULES_VERIFICATION.md
