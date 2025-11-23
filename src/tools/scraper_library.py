@@ -29,27 +29,12 @@ OFFICIAL_SCRAPERS = [
         'monthly_users': 4650,
         'rating': 4.36,
         'best_for': ['documentation', 'blog', 'general'],
-        'output_format': 'markdown',  # Primary format
+        'output_format': 'markdown',
         'features': ['markdown', 'text', 'html', 'file_download', 'anti_blocking'],
         'speed': 'medium',
         'cost': 'free'
     },
-    {
-        'id': 'apify/rag-web-browser',
-        'name': 'RAG Web Browser',
-        'stats': {'runs': {'total': 7503, 'finished': 7445, 'failed': 58}},
-        'pricingModel': 'FREE',
-        'title': 'RAG Web Browser - OpenAI Assistant compatible',
-        'username': 'apify',
-        'success_rate': 0.992,
-        'monthly_users': 682,
-        'rating': 4.93,
-        'best_for': ['documentation', 'blog', 'news'],
-        'output_format': 'markdown',
-        'features': ['markdown', 'google_search', 'fast', 'anti_blocking'],
-        'speed': 'fast',
-        'cost': 'free'
-    },
+    # NOTE: apify/rag-web-browser removed - requires different input format (query instead of startUrls)
     {
         'id': 'apify/cheerio-scraper',
         'name': 'Cheerio Scraper',
