@@ -297,11 +297,10 @@ async def main():
             'query_instructions': 'See query-guide.md in Key-Value Store for detailed usage instructions'
         })
 
-        # Save query guide to KV Store
-        await Actor.setValue('query-guide.md', query_guide_content)
+        # Note: Query guide already saved to KV Store at line 270 as QUERY_GUIDE.md
 
-        # Save corpus metadata to KV Store
-        await Actor.setValue('gemini-corpus.json', gemini_corpus)
+        # Save corpus metadata to KV Store for reference
+        await Actor.set_value('gemini-corpus.json', gemini_corpus)
 
         # ========== SUCCESS ==========
 
