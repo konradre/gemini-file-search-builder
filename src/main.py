@@ -298,7 +298,7 @@ async def main():
         Actor.log.info(f"")
         Actor.log.info(f"Knowledge base created: {gemini_corpus['file_search_store_name']}")
         Actor.log.info(f"Files indexed: {gemini_corpus['files_indexed']}")
-        Actor.log.info(f"Total charged: ${total_charge:.2f}")
+        Actor.log.info(f"Tier: {tier.upper()} (${tier_price:.2f})")
         Actor.log.info(f"")
         Actor.log.info(f"📖 See 'query-guide.md' in Key-Value Store for usage instructions")
         Actor.log.info(f"")
