@@ -32,7 +32,8 @@ OFFICIAL_SCRAPERS = [
         'output_format': 'markdown',
         'features': ['markdown', 'text', 'html', 'file_download', 'anti_blocking'],
         'speed': 'medium',
-        'cost': 'free'
+        'cost': 'free',
+        'supports_files': True  # Downloads PDFs, DOCX, XLSX, CSV
     },
     # NOTE: apify/rag-web-browser removed - requires different input format (query instead of startUrls)
     {
@@ -49,7 +50,8 @@ OFFICIAL_SCRAPERS = [
         'output_format': 'html',
         'features': ['fast', 'no_javascript'],
         'speed': 'very_fast',
-        'cost': 'free'
+        'cost': 'free',
+        'supports_files': False  # HTML only
     },
     {
         'id': 'apify/beautifulsoup-scraper',
@@ -65,7 +67,8 @@ OFFICIAL_SCRAPERS = [
         'output_format': 'html',
         'features': ['python', 'fast'],
         'speed': 'fast',
-        'cost': 'free'
+        'cost': 'free',
+        'supports_files': False  # HTML only
     }
 ]
 
@@ -86,7 +89,8 @@ COMMUNITY_AI_SCRAPERS = [
         'output_format': 'text',
         'features': ['ai_optimized'],
         'speed': 'medium',
-        'cost': 'free'
+        'cost': 'free',
+        'supports_files': False  # Text extraction only
     },
     {
         'id': 'quaking_pail/ai-website-content-markdown-scraper',
@@ -102,7 +106,8 @@ COMMUNITY_AI_SCRAPERS = [
         'output_format': 'markdown',
         'features': ['markdown', 'ai_optimized'],
         'speed': 'medium',
-        'cost': 'paid'  # $30 per 1000
+        'cost': 'paid',  # $30 per 1000
+        'supports_files': False  # Markdown only
     }
 ]
 
@@ -205,5 +210,11 @@ def score_scraper_production(scraper: Dict, budget_mode: str, target_type: str) 
         score += 7
     elif scraper['output_format'] == 'html':
         score += 5
+
+    # File download bonus (0-10 points) - for documentation sites
+    if scraper.get('supports_files', False) and target_type == 'documentation':
+        score += 10  # Bonus for docs sites (likely have PDFs)
+    elif scraper.get('supports_files', False):
+        score += 5  # Smaller bonus for other site types
 
     return round(score, 1)
