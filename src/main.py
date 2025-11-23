@@ -218,39 +218,29 @@ async def main():
 
         Actor.log.info(f"\n💰 Phase 5: Calculate Pricing")
 
-        # Determine tier
+        # Determine tier based on pages scraped
         pages_count = len(scraped_items)
         if pages_count <= 50:
-            scraper_fee = 2.00
-            tier = 'simple'
+            tier = 'small'
+            tier_price = 8.00
+            event_name = 'knowledge-base-small'
         elif pages_count <= 200:
-            scraper_fee = 5.00
             tier = 'medium'
-        elif pages_count <= 500:
-            scraper_fee = 10.00
-            tier = 'large'
+            tier_price = 12.00
+            event_name = 'knowledge-base-medium'
         else:
-            scraper_fee = 15.00
-            tier = 'massive'
+            tier = 'large'
+            tier_price = 18.00
+            event_name = 'knowledge-base-large'
 
-        # Calculate total
-        base_fee = 8.00
-        total_charge = base_fee + scraper_fee + gemini_corpus['cost_estimate_usd']
+        Actor.log.info(f"Pricing tier: {tier.upper()}")
+        Actor.log.info(f"  Pages scraped: {pages_count}")
+        Actor.log.info(f"  Tier price: ${tier_price:.2f}")
+        Actor.log.info(f"  Gemini indexing cost: ${gemini_corpus['cost_estimate_usd']:.4f}")
+        Actor.log.info(f"  Total charge: ${tier_price:.2f}")
 
-        # Round to nearest $0.50
-        total_charge = round(total_charge * 2) / 2
-
-        # Enforce minimum
-        total_charge = max(10.00, total_charge)
-
-        Actor.log.info(f"Pricing breakdown:")
-        Actor.log.info(f"  Base fee: ${base_fee:.2f}")
-        Actor.log.info(f"  Scraper ({tier}): ${scraper_fee:.2f}")
-        Actor.log.info(f"  Gemini indexing: ${gemini_corpus['cost_estimate_usd']:.2f}")
-        Actor.log.info(f"  Total: ${total_charge:.2f}")
-
-        # Charge user (pay-per-event pricing)
-        await Actor.charge(event_name='knowledge-base-created', count=1)
+        # Charge user based on tier (pay-per-event pricing)
+        await Actor.charge(event_name=event_name, count=1)
 
         # ========== PHASE 6: OUTPUT ==========
 
@@ -287,11 +277,11 @@ async def main():
                 'cost_estimate_usd': gemini_corpus['cost_estimate_usd']
             },
             'pricing': {
-                'base_fee': base_fee,
-                'scraper_tier': tier,
-                'scraper_fee': scraper_fee,
-                'gemini_indexing': gemini_corpus['cost_estimate_usd'],
-                'total_charged': total_charge
+                'tier': tier,
+                'tier_price': tier_price,
+                'pages_count': pages_count,
+                'gemini_indexing_cost': gemini_corpus['cost_estimate_usd'],
+                'event_charged': event_name
             },
             'created_at': gemini_corpus['created_at'],
             'query_instructions': 'See query-guide.md in Key-Value Store for detailed usage instructions'
