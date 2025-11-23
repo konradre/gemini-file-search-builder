@@ -13,6 +13,19 @@ credentials.json
 SESSION_*.md
 /test_*.py
 
+# ========== IMAGES & MEDIA ==========
+# Never commit images (icons, screenshots, etc.)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp
+*.bmp
+*.tiff
+*.ico
+*.heic
+
 # ========== APIFY ACTOR ==========
 # Local storage (contains INPUT.json with secrets)
 apify_storage/
