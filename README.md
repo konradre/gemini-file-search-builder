@@ -186,82 +186,6 @@ Your Apify subscription plan determines automatic discounts:
 - 6/6 integration tests passing
 - 100% banned pattern validation
 
-## Architecture
-
-### Key Features
-
-1. **Modular Design** - Separate modules for scraping, conversion, and upload
-2. **Challenge Compliance** - 100% banned scraper filtering (tested with 49 unit tests)
-3. **Intelligent Selection** - Automatic scraper scoring based on target type and budget
-
-### Tech Stack
-
-- **Apify SDK 3.0** - Actor runtime & scraper orchestration
-- **Google Gemini API** - File Search for RAG (unified SDK `google-genai`)
-- **BeautifulSoup4** - HTML parsing & content extraction
-- **Python 3.11+** - Type hints, async/await
-
-### Project Structure
-
-```
-gemini-file-search-builder/
-├── .actor/
-│   ├── actor.json          # Actor configuration
-│   ├── INPUT_SCHEMA.json   # Input validation schema
-│   └── output_schema.json  # Output definition
-├── src/
-│   ├── main.py             # Main workflow orchestration
-│   ├── tools/
-│   │   ├── scraper_library.py     # Production scraper library (5 scrapers)
-│   │   ├── scraper_selector.py    # Smart selection + banned filter
-│   │   ├── document_converter.py  # HTML → clean text
-│   │   └── gemini_uploader.py     # File Search integration
-│   └── utils/
-├── tests/
-│   └── test_banned_filter.py     # 49 unit tests
-├── Dockerfile
-├── requirements.txt
-└── README.md
-```
-
-## Development
-
-### Local Setup
-
-```bash
-# Clone repository
-git clone <your-repo-url>
-cd gemini-file-search-builder
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run locally
-python __main__.py
-```
-
-### Running Tests
-
-```bash
-pytest tests/  # 49/49 tests should pass
-```
-
-### Environment Variables
-
-Create `.env` file (not committed):
-```bash
-GEMINI_API_KEY=your_key_here
-APIFY_TOKEN=your_token_here
-```
-
-## Limitations & Known Issues
-
-1. **Apify Store Search** - Current MVP uses hardcoded scraper whitelist. Production would use dynamic Store search.
-
-2. **Proxy Restrictions** - Some sites (e.g., docs.react.dev) may be blocked by Apify cloud proxies. Use accessible documentation sites.
-
-3. **File Size Limits** - Gemini File Search supports up to 2GB per file, 10K files per store.
-
 ## FAQ
 
 **Q: How long does the knowledge base persist?**
@@ -306,20 +230,11 @@ This Actor is compatible with Model Context Protocol (MCP) and can be used with 
 
 AI agents can trigger this Actor automatically based on user queries. See the [MCP documentation](https://docs.apify.com/platform/integrations/mcp) for setup instructions.
 
-## Support & Contributing
+## Support
 
-- **Issues**: GitHub Issues
-- **Questions**: GitHub Discussions
-- **Apify $1M Challenge**: Submission ID TBD
+**Need help?**
+- Use the **Issues** tab above to report problems or request features
+- Check the **FAQ** section for common questions
+- Contact via Apify messaging for urgent issues
 
-## License
-
-MIT License - See LICENSE file
-
-## Author
-
-Built for the Apify $1M Challenge (November 2025 - January 2026)
-
----
-
-**🎯 Ready to try it?** [Run on Apify](https://console.apify.com/actors) • [View Source](https://github.com/your-repo)
+**Built for the Apify $1M Challenge** (November 2025 - January 2026)
