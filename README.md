@@ -1,14 +1,23 @@
 # Gemini File Search Builder
 
-**Build Gemini File Search RAG knowledge bases from any website with automatic citations**
+**Turn any website into an AI-powered knowledge base with Google Gemini. Get unlimited queries with automatic citations.**
 
-[![Apify Store](https://img.shields.io/badge/Apify-Store-blue)](https://console.apify.com)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Apify SDK](https://img.shields.io/badge/Apify%20SDK-3.0-green)](https://docs.apify.com/sdk/python/)
+## What You Get
 
-## What It Does
+Scrape once, query forever. This actor builds permanent Gemini File Search RAG knowledge bases from any website - no ongoing costs, unlimited AI-powered Q&A with automatic source citations.
 
-This Apify actor creates a **permanent, queryable knowledge base** from any website using Google's Gemini File Search (announced November 6, 2025). Unlike traditional scrapers that just extract data, this actor transforms websites into intelligent Q&A systems with **automatic citation tracking**.
+**Perfect for:**
+- Creating AI chatbots from documentation
+- Building searchable knowledge bases
+- Powering RAG applications with website content
+- Querying technical docs with natural language
+
+**Key benefits:**
+- ✅ **One-time scraping** - Pay once ($0.0015/page), query unlimited times
+- ✅ **Automatic citations** - Every answer includes sources
+- ✅ **No ongoing costs** - Gemini File Search storage is persistent
+- ✅ **Cross-platform** - Query from Python, web, or mobile
+- ✅ **Challenge compliant** - 100% banned scraper filtering
 
 ### Key Features
 
@@ -41,7 +50,7 @@ Website URL → Scraper Selection → Content Extraction → Document Conversion
 4. **Gemini Upload** - Creates File Search Store (persistent, free storage)
 5. **Query Guide** - Returns instructions for using your knowledge base
 
-## Quick Start
+## How to Build a Gemini Knowledge Base (3 Steps)
 
 ### 1. Get API Keys
 
@@ -119,7 +128,7 @@ print(response.text)  # Answer with automatic citations
 }
 ```
 
-## Pricing & Costs
+## How Much Does It Cost?
 
 This Actor uses **pay-per-page pricing** for transparent, predictable costs:
 
