@@ -310,7 +310,7 @@ Google supports multiple methods for querying File Search Stores. Choose the one
 1. Visit **https://aistudio.google.com**
 2. Sign in with the **same Google account** (same API key)
 3. Create a new chat
-4. Click **"Add resources"** → **"File Search Stores"**
+4. Click **"Add resources"** > **"File Search Stores"**
 5. Select **`{corpus_name}`** from your stores list
 6. Ask questions naturally - citations included automatically!
 
