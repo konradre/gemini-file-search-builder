@@ -93,7 +93,7 @@ from google.genai import types
 client = genai.Client(api_key="YOUR_GEMINI_KEY")
 
 response = client.models.generate_content(
-    model='gemini-2.5-flash',
+    model='gemini-2.5-flash',  # Or gemini-3-pro, etc.
     contents='Your question here',
     config=types.GenerateContentConfig(
         tools=[types.Tool(
@@ -183,16 +183,11 @@ Google charges for File Search usage as follows:
 
 **Query costs (ongoing):**
 - **Retrieved context**: Charged as standard input tokens to the LLM
-- **LLM inference**: Standard model pricing applies
-  - Gemini 2.5 Flash: $0.30/1M input + $2.50/1M output tokens
-  - Gemini 2.0 Flash: $0.10/1M input + $0.40/1M output tokens
+- **LLM inference**: Standard Gemini model pricing (varies by model: Gemini 3 Pro, Gemini 2.5 Flash, etc.)
 - **No File Search markup**: Google charges only standard model rates
 
-**Example query cost (Gemini 2.5 Flash):**
-- Your question: 20 tokens (~$0.000006)
-- Retrieved context: 2,000 tokens (~$0.0006)
-- Generated answer: 500 tokens (~$0.00125)
-- **Total per query: ~$0.002** (typical)
+**Query costs are entirely determined by Google's pricing** at the time you query.
+The actor has no control over these costs.
 
 See [Gemini pricing](https://ai.google.dev/gemini-api/docs/pricing) for current rates.
 
@@ -205,7 +200,7 @@ See [Gemini pricing](https://ai.google.dev/gemini-api/docs/pricing) for current 
 | Gemini indexing | ~$0.05 |
 | **TOTAL** | **~$0.72** |
 
-**After indexing:** Storage is free. Queries cost standard Gemini model rates (~$0.002/query typical, subject to Google's pricing).
+**After indexing:** Storage is free. Query costs subject to Google Gemini's pricing (varies by model).
 
 ### What You DON'T Pay to This Actor
 

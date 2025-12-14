@@ -14,7 +14,7 @@ Documentation:
 - File Search Stores: https://ai.google.dev/gemini-api/docs/file-search
 - Persistence: Indefinite (until manually deleted)
 - Storage: Free (no storage fees)
-- Queries: Free (only pay for generation ~$0.001/query)
+- Queries: Standard Gemini model pricing (~$0.002/query typical, subject to Google's rates)
 """
 
 from typing import List, Dict, Optional
@@ -247,7 +247,7 @@ async def upload_to_gemini(
     print(f"\n💡 Query instructions:")
     print(f"   Use store name in your queries: {store_name}")
     print(f"   Storage: FREE (no storage fees)")
-    print(f"   Queries: FREE (only pay for generation ~$0.001/query)")
+    print(f"   Queries: Standard Gemini model pricing (~$0.002/query typical)")
 
     return corpus_metadata
 
@@ -285,7 +285,7 @@ Your knowledge base has been created successfully!
 - **Store Name:** `{store_name}`
 - **Files Indexed:** {files_count}
 - **Storage:** FREE (indefinite, no storage fees)
-- **Queries:** FREE (only pay for generation ~$0.001/query)
+- **Queries:** Standard Gemini model pricing (~$0.002/query typical, subject to Google's rates)
 
 ---
 
@@ -402,19 +402,21 @@ for query in queries:
 
 ---
 
-## Cost Per Query
+## Query Costs (Ongoing)
 
-**FREE:**
+**What's FREE:**
 - ✅ Storage (unlimited, indefinite)
-- ✅ Vector search
-- ✅ Retrieval
+- ✅ Query-time embedding generation (converting your question to vector)
 
-**Paid:**
-- Gemini generation only: ~$0.0004-0.0008 per query
-  - 100 queries: ~$0.05-0.10
-  - 1,000 queries: ~$0.50-1.00
+**What Costs Money (Per Query):**
+- Retrieved context tokens: Charged as standard Gemini input tokens
+- LLM inference: Standard Gemini model pricing
+- Cost varies by model used (Gemini 3 Pro, Gemini 2.5 Flash, etc.)
 
-**Your knowledge base queries are essentially FREE.**
+**Query costs are entirely determined by Google's pricing** at the time you query.
+The actor has no control over these costs.
+
+See [Gemini pricing](https://ai.google.dev/gemini-api/docs/pricing) for current rates.
 
 ---
 
