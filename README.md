@@ -193,15 +193,10 @@ Your Apify subscription plan determines automatic discounts:
 - Search engines: Google Maps, Google Search, Google Trends
 - B2B platforms: Apollo
 
-✅ **Skills-Based Architecture**
-- Progressive disclosure (75% token reduction)
-- Hook-based enforcement (zero bypass)
-- Automated compliance testing
-
-✅ **Test Coverage**
+✅ **Quality Assurance**
 - 49/49 unit tests passing
-- 6/6 integration tests passing
-- 100% banned pattern validation
+- Production-tested on real websites
+- Automatic fallback system for reliability
 
 ## FAQ
 
