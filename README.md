@@ -4,7 +4,7 @@
 
 ## What You Get
 
-Scrape once, query forever. This actor builds permanent Gemini File Search RAG knowledge bases from any website. After initial indexing costs (actor + scraper + Gemini), storage and queries are free indefinitely.
+Scrape once, query forever. This actor builds permanent Gemini File Search RAG knowledge bases from any website. After initial setup, storage is free and queries use standard Gemini model pricing (subject to Google's rates).
 
 **Perfect for:**
 - Creating AI chatbots from documentation
@@ -15,7 +15,7 @@ Scrape once, query forever. This actor builds permanent Gemini File Search RAG k
 **Key benefits:**
 - ✅ **One-time scraping** - Actor fee: $0.0015/page (plus Apify scraper + Gemini costs)
 - ✅ **Automatic citations** - Every answer includes sources
-- ✅ **No storage fees** - Gemini File Search storage is free and persistent
+- ✅ **Free storage** - File Search stores persist indefinitely at no cost
 - ✅ **Cross-platform** - Query from Python, web, or mobile
 - ✅ **Challenge compliant** - 100% banned scraper filtering
 
@@ -23,7 +23,7 @@ Scrape once, query forever. This actor builds permanent Gemini File Search RAG k
 
 - 🧠 **Automatic RAG Pipeline** - Scrape → Clean → Upload to Gemini (all in one run)
 - 📚 **Built-in Citations** - Every answer includes source documents
-- ♾️ **Unlimited Free Queries** - After initial indexing, query forever at no additional cost
+- ♾️ **No per-query fees** - Queries use standard Gemini token pricing (no File Search markup)
 - 🎯 **Challenge Compliant** - 100% banned scraper filtering (Instagram, Amazon, Google Maps, etc.)
 - 🚀 **Zero Setup** - Just provide URL + Gemini API key
 - 💰 **Cost Optimized** - Smart scraper selection based on your budget
@@ -172,12 +172,29 @@ The actor uses Apify scrapers to extract content. **You pay Apify separately** f
 
 ### 3. Gemini API Costs (Charged by Google)
 
-Google charges for **document indexing** when uploading to File Search:
-- **Indexing**: ~$0.15 per 1 million tokens (~$0.01-0.10 for typical 100-page sites)
-- **Storage**: FREE (indefinite, no ongoing fees)
-- **Query embeddings**: FREE (unlimited queries after indexing)
+Google charges for File Search usage as follows:
 
-See [Gemini pricing](https://ai.google.dev/pricing) for current rates.
+**One-time indexing costs:**
+- **Embeddings**: $0.15 per 1M tokens (when uploading documents)
+- Typical 100-page site: ~$0.01-0.10 in indexing fees
+
+**Storage costs:**
+- **FREE** (indefinite, no ongoing fees)
+
+**Query costs (ongoing):**
+- **Retrieved context**: Charged as standard input tokens to the LLM
+- **LLM inference**: Standard model pricing applies
+  - Gemini 2.5 Flash: $0.30/1M input + $2.50/1M output tokens
+  - Gemini 2.0 Flash: $0.10/1M input + $0.40/1M output tokens
+- **No File Search markup**: Google charges only standard model rates
+
+**Example query cost (Gemini 2.5 Flash):**
+- Your question: 20 tokens (~$0.000006)
+- Retrieved context: 2,000 tokens (~$0.0006)
+- Generated answer: 500 tokens (~$0.00125)
+- **Total per query: ~$0.002** (typical)
+
+See [Gemini pricing](https://ai.google.dev/gemini-api/docs/pricing) for current rates.
 
 ### Total Cost Example (100 Pages)
 
@@ -188,7 +205,7 @@ See [Gemini pricing](https://ai.google.dev/pricing) for current rates.
 | Gemini indexing | ~$0.05 |
 | **TOTAL** | **~$0.72** |
 
-**After indexing:** Query unlimited times at $0 additional cost.
+**After indexing:** Storage is free. Queries cost standard Gemini model rates (~$0.002/query typical, subject to Google's pricing).
 
 ### What You DON'T Pay to This Actor
 
